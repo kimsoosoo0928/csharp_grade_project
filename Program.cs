@@ -6,19 +6,34 @@ namespace grade_project
     {
 
         // 로그인 메서드 만들기
-        public void Login(string name, string id, string password)
+        private static void Login()
         {
             
-            Console.WriteLine("이름을 입력하세요.");
-            name = Console.ReadLine();
-            Console.WriteLine("ID을 입력하세요.");
-            id = Console.ReadLine();
-            Console.WriteLine("PASSWORD를 입력하세요.");
-            password = Console.ReadLine();
+            Console.WriteLine("==로그인==");
+            Console.Write("ID를 입력하세요 : ");
+            string id = Console.ReadLine();
+            Console.Write("PW를 입력하세요 : ");
+            string pw = Console.ReadLine();
+            Console.WriteLine(id + "님,반갑습니다.");
+            
+            
             
         }
-        
-   
+
+        private static void Join()
+        {
+            Console.WriteLine("==회원가입==");
+            Console.Write("이름를 입력하세요 : ");
+            string name = Console.ReadLine();
+            Console.Write("ID를 입력하세요 : ");
+            string id = Console.ReadLine();
+            Console.Write("PW를 입력하세요 : ");
+            string pw = Console.ReadLine();
+            
+
+        }
+
+
         static void Main(string[] args)
         {
             
@@ -27,12 +42,27 @@ namespace grade_project
                 Console.WriteLine("1. 로그인");
                 Console.WriteLine("2. 회원가입");
                 Console.WriteLine("3. 프로그램종료");
-                
-                string input = Console.ReadLine();
+                Console.Write("메뉴를 입력하세요 : ");
 
-                if (input == "1")
+
+                int menu;
+                 menu = Convert.ToInt32(Console.ReadLine()); 
+
+                if(menu==1)
                 {
-                    
+                   
+                        Login();
+                                
+                }
+                 
+                else if (menu==2)
+                {
+                    Join();
+                }    
+                else
+                {
+                    Console.Write("=프로그램종료=");
+                }
                 }
 
                     
@@ -49,4 +79,3 @@ namespace grade_project
 
 
     }
-}
