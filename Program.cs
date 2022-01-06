@@ -2,13 +2,15 @@
 
 namespace grade_project
 {
-    
+
     abstract class Member
     {
         string Id;
         string Password;
         string Name;
         protected bool IsProffessor;
+
+        
 
         public Member(string _id, string _password, string _name)
         {
@@ -18,6 +20,8 @@ namespace grade_project
         }
 
         abstract public void ShowMenu();
+
+
     }
 
     class Professor : Member
@@ -25,9 +29,79 @@ namespace grade_project
         public Professor(string _id, string _password, string _name) : base(_id, _password, _name)
         {
             this.IsProffessor = true;
+
+
+
         }
 
         public override void ShowMenu()
+        {
+            
+            
+                while (true)
+                {
+                    Console.WriteLine("1. 성적 기입");
+                    Console.WriteLine("2. 성적 확인");                    
+                    Console.WriteLine("4. 프로그램 종료");
+                    
+                    Console.Write("메뉴를 입력하세요 : ");
+
+                    int menu;
+                    int.TryParse(Console.ReadLine(), out menu);
+
+                    if (menu == 1)
+                    {
+                    // 성적입력
+
+                    int sub1;
+                    int sub2;
+                    int sub3;                    
+
+                    Console.Write("학생 이름을 입력하세요 : ");
+                    string name = Console.ReadLine();
+                    Console.Write("국어점수를 입력하세요 : ");
+                    int.TryParse(Console.ReadLine(), out sub1);
+                    Console.Write("영어점수를 입력하세요 : ");
+                    int.TryParse(Console.ReadLine(), out sub2);
+                    Console.Write("수학점수를 입력하세요 : ");
+                    int.TryParse(Console.ReadLine(), out sub3);             
+                    
+                    // 성적을 입력시켜서 어디다 저장할것인가?
+                    
+                    
+                    
+               
+
+                }
+                    else if (menu == 2)
+                    {
+                        Check_grade();
+                    }
+                    else if (menu == 3)
+                    {
+                        Logout();
+                    }
+                    else
+                    {                   
+                        break;
+                    }
+
+
+                }
+            
+        }
+
+        private void Logout()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void Check_grade()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void Write_point()
         {
             throw new NotImplementedException();
         }
@@ -35,14 +109,82 @@ namespace grade_project
 
     class Student : Member
     {
+
+        int kor = 0;
+        int eng = 0;
+        int math = 0;        
+
+        //string grade;
+
+        public int GetKor()
+        {
+            return kor; 
+        }
+        public int GetEng()
+        {
+            return eng;
+        }
+        public int GetMath()
+        {
+            return math;
+        }
+
+        public void SetKor(int _kor)
+        {
+            kor = _kor;
+        }
+        public void SetEng(int _eng)
+        {
+            eng = _eng;
+        }
+        public void SetMath(int _math)
+        {
+            math = _math;
+        }
+
+        //void NullCheck(ref int? subject)
+        //{
+        //    if (subject == null)
+        //    {
+        //        subject = 0;
+        //    }
+        //}
+
+
+
+        public int Total 
+        {
+            get
+            {                
+                return (kor + eng + math);        
+            }        
+           
+        }
+
+        public double Average 
+        {
+            get
+            {                
+                return (Total)/3.0;
+            }
+
+        }
+
+
+
+
+
         public Student(string _id, string _password, string _name) : base(_id, _password, _name)
         {
             this.IsProffessor = false;
+
+          
+
         }
 
         public override void ShowMenu()
         {
-            throw new NotImplementedException();
+           
         }
     }
 
@@ -110,7 +252,7 @@ namespace grade_project
 
         }
 
-        static void Menu_prof() 
+        public static void Menu_prof() 
         {
             while (true)
             {
@@ -184,7 +326,8 @@ namespace grade_project
         static void Main(string[] args)
         {
 
-            Professor professor = new Professor("","","");
+
+            Professor professor = new Professor("", "", "");
 
             while (mainLoop)
             {
@@ -221,7 +364,7 @@ namespace grade_project
                 else if (menu == 3)
                 {
                     Join();
-                    
+
                 }
 
                 else
